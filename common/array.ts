@@ -116,6 +116,45 @@ const count = <T extends string | number>(
   return haystack.filter((x) => x === needle).length;
 };
 
+/**
+ * Get frequencies of all unique values among given arrays or sets
+ * @example frequencies(['A', 'B'], ['A'], ['A', 'B', 'C']) ->
+ * {
+ *   freqMap: Map{ 'A': 3, 'B': 2, 'C': 1 },
+ *   mostFreq: { value: 'A', total: 3 },
+ *   leastFreq: { value: 'C', total: 1 }
+ * }
+ */
+const frequencies = <T extends string | number>(
+  arrs: T[][] | Set<T>[],
+): {
+  freqMap: Map<T, number>;
+  mostFreq: { value: T; total: number } | null;
+  leastFreq: { value: T; total: number } | null;
+} => {
+  const freqMap = new Map<T, number>();
+  for (const arr of arrs) {
+    for (const item of arr) {
+      freqMap.set(item, (freqMap.get(item) || 0) + 1);
+    }
+  }
+  let mostFreq: { value: T; total: number } | null = null;
+  let leastFreq: { value: T; total: number } | null = null;
+  for (const [item, freq] of freqMap) {
+    if (!mostFreq || freq > mostFreq.total) {
+      mostFreq = { value: item, total: freq };
+    }
+    if (!leastFreq || freq < leastFreq.total) {
+      leastFreq = { value: item, total: freq };
+    }
+  }
+  return {
+    freqMap,
+    mostFreq,
+    leastFreq,
+  };
+};
+
 const windows = <T>(arr: T[], size: number): T[][] =>
   arr.reduce(
     (acc, _, i) =>
@@ -151,6 +190,7 @@ export const A = {
   combinations,
   group,
   count,
+  frequencies,
   windows,
   range,
 };
