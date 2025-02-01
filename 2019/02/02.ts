@@ -28,7 +28,6 @@ function parse(input: string): number[] {
 }
 
 const run: StateFn = ({ index, codes }) => {
-  // console.log({ index, codes });
   const fn = fns[codes[index]];
   if (!fn) throw new Error(`Unsupported IntCode "${codes[index]}"`);
   const output = fn({ index, codes });
