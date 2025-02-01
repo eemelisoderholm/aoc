@@ -84,6 +84,9 @@ solutions themselves are usually pure `(string) => number` functions.
 | ------------------------------------------------------- | ---------------------------------- |
 | [2018/01: Chronal Calibration](./2018/01/01.md)         | [./2018/01/01.ts](./2018/01/01.ts) |
 | [2018/02: Inventory Management System](./2018/02/02.md) | [./2018/02/02.ts](./2018/02/02.ts) |
+| [2018/03: No Matter How You Slice It](./2018/03/03.md)  | [./2018/03/03.ts](./2018/03/03.ts) |
+| [2018/04: Repose Record](./2018/04/04.md)               | [./2018/04/04.ts](./2018/04/04.ts) |
+| [2018/05: Alchemical Reduction](./2018/05/05.md)        | [./2018/05/05.ts](./2018/05/05.ts) |
 
 ### 2019
 
