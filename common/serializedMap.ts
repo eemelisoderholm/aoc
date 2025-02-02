@@ -12,7 +12,7 @@ type MapKeyDeserializer<T> = (x: string) => T;
  *
  * For example:
  *   const Vec2Map = createSerializedMap<Vec2>(v2ToString, v2FromString)
- *   const myVec2Map = new Vec2Set()
+ *   const myVec2Map = new Vec2Map()
  *   myVec2Map.set({ x: 1, y: 0 }, 5)
  *   myVec2Map.get({ x: 1, y: 0}) // 5
  */
