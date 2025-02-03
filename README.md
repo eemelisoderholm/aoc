@@ -98,6 +98,7 @@ solutions themselves are usually pure `(string) => number` functions.
 | [2019/02: 1202 Program Alarm](./2019/02/02.md)                 | [./2019/02/02.ts](./2019/02/02.ts) |
 | [2019/03: Crossed Wires](./2019/03/03.md)                      | [./2019/03/03.ts](./2019/03/03.ts) |
 | [2019/04: Secure Container](./2019/04/04.md)                   | [./2019/04/04.ts](./2019/04/04.ts) |
+| [2019/05: Sunny with a Chance of Asteroids](./2019/05/05.md)   | [./2019/05/05.ts](./2019/05/05.ts) |
 
 ### 2020
 
