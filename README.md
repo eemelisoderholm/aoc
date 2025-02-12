@@ -69,6 +69,7 @@ solutions themselves are usually pure `(string) => number` functions.
 | [2016/03: Squares With Three Sides](./2016/03/03.md)        | [./2016/03/03.ts](./2016/03/03.ts) |
 | [2016/04: Security Through Obscurity](./2016/04/04.md)      | [./2016/04/04.ts](./2016/04/04.ts) |
 | [2016/05: How About a Nice Game of Chess?](./2016/05/05.md) | [./2016/05/05.ts](./2016/05/05.ts) |
+| [2016/06: Signals and Noise](./2016/06/06.md)               | [./2016/06/06.ts](./2016/06/06.ts) |
 
 ### 2017
 

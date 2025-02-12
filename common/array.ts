@@ -117,6 +117,42 @@ const count = <T extends string | number>(
 };
 
 /**
+ * Get the number of occurances for each value in the given array
+ * @example ["A", "A", "A", "B", "B"] => { A: 3, B: 2 }
+ * @example [10, 10, 10, 20, 20] => { 10: 3, 20: 2 }
+ */
+const counts = <T extends string | number>(
+  arr: T[],
+): Record<string, number> => {
+  const counts: Record<string, number> = {};
+  for (const val of arr) {
+    const key = val.toString();
+    counts[key] ??= 0;
+    counts[key]++;
+  }
+  return counts;
+};
+
+/**
+ * Get a new array sorted by the given function, but rather than
+ * using the values as the sort parameters, the function receives the
+ * total count of the values within the array
+ * @example freqSort([3, 3, 1, 2, 2, 2], (a, b) => b - a)) =>
+ *                   [2, 2, 2, 3, 3, 1]
+ */
+const freqSort = <T extends (string | number)>(
+  arr: T[],
+  fn: (a: number, b: number) => number,
+): T[] => {
+  const c = counts(arr);
+  return arr.toSorted((a, b) => {
+    const aCount = c[a.toString()];
+    const bCount = c[b.toString()];
+    return fn(aCount, bCount);
+  });
+};
+
+/**
  * Get frequencies of all unique values among given arrays or sets
  * @example frequencies(['A', 'B'], ['A'], ['A', 'B', 'C']) ->
  * {
@@ -190,6 +226,8 @@ export const A = {
   combinations,
   group,
   count,
+  counts,
+  freqSort,
   frequencies,
   windows,
   range,
