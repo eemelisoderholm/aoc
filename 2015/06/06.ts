@@ -30,7 +30,7 @@ function applyFlipInstructions(
   instructions: Instruction[],
 ): Vec2Map<boolean> {
   instructions.forEach((instr) => {
-    const positions = V2.fromRange(instr.range);
+    const positions = V2.setFromRange(instr.range);
     positions.forEach((pos) => {
       const val = lights.get(pos) ?? false;
       switch (instr.type) {
@@ -54,7 +54,7 @@ function applyBrightnessInstructions(
   instructions: Instruction[],
 ): Vec2Map<number> {
   instructions.forEach((instr) => {
-    const positions = V2.fromRange(instr.range);
+    const positions = V2.setFromRange(instr.range);
     positions.forEach((pos) => {
       const val = lights.get(pos) ?? 0;
       switch (instr.type) {

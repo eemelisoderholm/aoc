@@ -199,7 +199,7 @@ const pathIntersections = (pathA: Vec2[], pathB: Vec2[]): Vec2[] => {
   return intersections;
 };
 
-const fromRange = (range: readonly [Vec2, Vec2]): Vec2Set => {
+const setFromRange = (range: readonly [Vec2, Vec2]): Vec2Set => {
   const positions = new V2.Set();
   for (let x = range[0].x; x <= range[1].x; x++) {
     for (let y = range[0].y; y <= range[1].y; y++) {
@@ -257,7 +257,7 @@ export const V2 = {
   directions,
   turn90CW,
   turn90CCW,
-  fromRange,
+  setFromRange,
   inBounds,
   getBounds,
   toString,
