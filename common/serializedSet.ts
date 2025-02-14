@@ -45,7 +45,7 @@ export function createSerializedSet<T>(
       this.set.clear();
     }
 
-    size(): number {
+    get size(): number {
       return this.set.size;
     }
 

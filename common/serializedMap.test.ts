@@ -17,7 +17,7 @@ Deno.test("SerializedMap", () => {
   // Constructor can take [k, v][] entries
   const mapA = new Vec2Map<number>([[{ x: 0, y: 0 }, 0]]);
 
-  assertEquals(mapA.size(), 1);
+  assertEquals(mapA.size, 1);
   assertEquals(mapA.has({ x: 0, y: 0 }), true);
   assertEquals(mapA.get({ x: 0, y: 0 }), 0);
   assertEquals(mapA.has({ x: 1, y: 1 }), false);
@@ -26,21 +26,21 @@ Deno.test("SerializedMap", () => {
   // Can add values
   mapA.set({ x: 2, y: 2 }, 4);
   assertEquals(mapA.get({ x: 2, y: 2 }), 4);
-  assertEquals(mapA.size(), 2);
+  assertEquals(mapA.size, 2);
 
   // Can replace values
   mapA.set({ x: 0, y: 0 }, 5);
   assertEquals(mapA.get({ x: 0, y: 0 }), 5);
-  assertEquals(mapA.size(), 2);
+  assertEquals(mapA.size, 2);
 
   // Can't delete non-existent
   mapA.delete({ x: 5, y: 5 });
-  assertEquals(mapA.size(), 2);
+  assertEquals(mapA.size, 2);
 
   // Can delete valid keys
   mapA.delete({ x: 2, y: 2 });
-  assertEquals(mapA.size(), 1);
+  assertEquals(mapA.size, 1);
 
   mapA.clear();
-  assertEquals(mapA.size(), 0);
+  assertEquals(mapA.size, 0);
 });

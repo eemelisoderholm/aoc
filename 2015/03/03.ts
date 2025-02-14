@@ -32,7 +32,7 @@ function getVisitedLocations(directions: Vec2[]): Vec2Set {
 export function part1(input: string) {
   const directions = parseDirections(input);
   const visited = getVisitedLocations(directions);
-  return visited.size();
+  return visited.size;
 }
 
 // Find how many houses are visited when two santas alternate directions
@@ -41,5 +41,5 @@ export function part2(input: string) {
   const partitions = A.partition(directions, (_, i) => i % 2 === 0);
   const partitionVisits = partitions.map(getVisitedLocations);
   const visited = new V2.Set(partitionVisits.flatMap((set) => [...set]));
-  return visited.size();
+  return visited.size;
 }

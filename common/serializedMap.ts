@@ -50,7 +50,7 @@ export function createSerializedMap<K>(
       this.map.clear();
     }
 
-    size(): number {
+    get size(): number {
       return this.map.size;
     }
 
