@@ -62,6 +62,24 @@ export function createSerializedSet<T>(
       return this.set.forEach((s) => fn(deserialize(s)));
     }
 
+    difference(other: SerializedSet): SerializedSet {
+      const result = new SerializedSet();
+      result.set = new Set([...this.set].filter((x) => !other.set.has(x)));
+      return result;
+    }
+
+    intersection(other: SerializedSet): SerializedSet {
+      const result = new SerializedSet();
+      result.set = new Set([...this.set].filter((x) => other.set.has(x)));
+      return result;
+    }
+
+    union(other: SerializedSet): SerializedSet {
+      const result = new SerializedSet();
+      result.set = new Set([...this.set, ...other.set]);
+      return result;
+    }
+
     [Symbol.iterator](): Iterator<T> {
       return this.values();
     }
