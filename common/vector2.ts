@@ -209,6 +209,16 @@ const setFromRange = (range: readonly [Vec2, Vec2]): Vec2Set => {
   return positions;
 };
 
+const arrayFromRange = (range: readonly [Vec2, Vec2]): Vec2[] => {
+  const positions: Vec2[] = [];
+  for (let x = range[0].x; x <= range[1].x; x++) {
+    for (let y = range[0].y; y <= range[1].y; y++) {
+      positions.push({ x, y });
+    }
+  }
+  return positions;
+};
+
 const inBounds = (pos: Vec2, min: Vec2, max: Vec2): boolean =>
   (pos.x >= min.x && pos.x <= max.x) &&
   (pos.y >= min.y && pos.y <= max.y);
@@ -258,6 +268,7 @@ export const V2 = {
   turn90CW,
   turn90CCW,
   setFromRange,
+  arrayFromRange,
   inBounds,
   getBounds,
   toString,
