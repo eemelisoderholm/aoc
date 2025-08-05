@@ -59,6 +59,7 @@ solutions themselves are usually pure `(string) => number` functions.
 | [2015/04: The Ideal Stocking Stuffer](./2015/04/04.md)             | [./2015/04/04.ts](./2015/04/04.ts) |
 | [2015/05: Doesn't He Have Intern-Elves For This?](./2015/05/05.md) | [./2015/05/05.ts](./2015/05/05.ts) |
 | [2015/06: Probably a Fire Hazard](./2015/06/06.md)                 | [./2015/06/06.ts](./2015/06/06.ts) |
+| [2015/07: Some Assembly Required](./2015/07/07.md)                 | [./2015/07/07.ts](./2015/07/07.ts) |
 
 ### 2016
 
