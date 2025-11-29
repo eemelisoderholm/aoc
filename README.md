@@ -83,6 +83,7 @@ solutions themselves are usually pure `(string) => number` functions.
 | [2017/04: High-Entropy Passphrases](./2017/04/04.md)                | [./2017/04/04.ts](./2017/04/04.ts) |
 | [2017/05: A Maze of Twisty Trampolines, All Alike](./2017/05/05.md) | [./2017/05/05.ts](./2017/05/05.ts) |
 | [2017/06: Memory Reallocation](./2017/06/06.md)                     | [./2017/06/06.ts](./2017/06/06.ts) |
+| [2017/07: Recursive Circus](./2017/07/07.md)                        | [./2017/07/07.ts](./2017/07/07.ts) |
 
 ### 2018
 

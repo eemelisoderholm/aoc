@@ -212,6 +212,45 @@ const range = (a: number, b?: number, step?: number): number[] => {
   return new Array(length).fill(0).map((_, i) => min + (i * (step ?? 1)));
 };
 
+/**
+ * Shallow comparison for whether all values in given array are equal
+ * @example allEqual([1, 1, 2]) => false
+ * @example allEqual([{}, {}]) => false
+ * @example allEqual([1, 1, 1]) => true
+ */
+const allEqual = <T>(arr: T[]): boolean => arr.every((x) => x === arr[0]);
+
+export interface OutlierResult<T> {
+  index: number;
+  expected: T; // the "normal" value
+  actual: T; // the odd one out
+}
+
+/**
+ * Find the first value in an array that does not match the most common value:
+ * @returns Details, or undefined if an outlier can't be determined
+ * @example findOutlierByFrequency(['A', 'A', 'B', 'A'])
+ *   => { expected: 'A', actual: 'B', index: 2 }
+ * @example findOutlierByFrequency([2, 2, 2]) => undefined
+ */
+function findOutlierByFrequency<T extends string | number>(
+  arr: T[],
+): OutlierResult<T> | undefined {
+  if (arr.length < 2 || allEqual(arr)) return;
+
+  const { mostFreq, leastFreq } = frequencies([arr]);
+  if (!mostFreq || !leastFreq) return;
+
+  const index = arr.findIndex((v) => v === leastFreq.value);
+  if (index === -1) return;
+
+  return {
+    index,
+    expected: mostFreq.value,
+    actual: leastFreq.value,
+  };
+}
+
 export const A = {
   head,
   tail,
@@ -231,4 +270,6 @@ export const A = {
   frequencies,
   windows,
   range,
+  allEqual,
+  findOutlierByFrequency,
 };
