@@ -168,4 +168,10 @@ solutions themselves are usually pure `(string) => number` functions.
 | [2024/05: Print Queue](./2024/05/05.md)        | [./2024/05/05.ts](./2024/05/05.ts) |
 | [2024/07: Bridge Repair](./2024/07/07.md)      | [./2024/07/07.ts](./2024/07/07.ts) |
 
+### 2025
+
+| Puzzle                                      | Solution                           |
+| ------------------------------------------- | ---------------------------------- |
+| [2025/01: Secret Entrance](./2025/01/01.md) | [./2025/01/01.ts](./2025/01/01.ts) |
+
 <!--- SOLUTIONS-AUTOGEN-END -->
