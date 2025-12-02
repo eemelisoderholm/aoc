@@ -173,5 +173,6 @@ solutions themselves are usually pure `(string) => number` functions.
 | Puzzle                                      | Solution                           |
 | ------------------------------------------- | ---------------------------------- |
 | [2025/01: Secret Entrance](./2025/01/01.md) | [./2025/01/01.ts](./2025/01/01.ts) |
+| [2025/02: Gift Shop](./2025/02/02.md)       | [./2025/02/02.ts](./2025/02/02.ts) |
 
 <!--- SOLUTIONS-AUTOGEN-END -->
