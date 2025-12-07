@@ -22,9 +22,11 @@ export function createSerializedSet<T>(
   return class SerializedSet {
     private set = new Set<string>();
 
-    constructor(items?: T[]) {
+    constructor(items?: Iterable<T>) {
       if (items) {
-        items.forEach((item) => this.add(item));
+        for (const item of items) {
+          this.add(item);
+        }
       }
     }
 
@@ -63,21 +65,19 @@ export function createSerializedSet<T>(
     }
 
     difference(other: SerializedSet): SerializedSet {
-      const result = new SerializedSet();
-      result.set = new Set([...this.set].filter((x) => !other.set.has(x)));
-      return result;
+      return this.filter((v) => !other.has(v));
     }
 
     intersection(other: SerializedSet): SerializedSet {
-      const result = new SerializedSet();
-      result.set = new Set([...this.set].filter((x) => other.set.has(x)));
-      return result;
+      return this.filter((v) => other.has(v));
     }
 
     union(other: SerializedSet): SerializedSet {
-      const result = new SerializedSet();
-      result.set = new Set([...this.set, ...other.set]);
-      return result;
+      return new SerializedSet([...this, ...other]);
+    }
+
+    filter(fn: (value: T) => boolean): SerializedSet {
+      return new SerializedSet([...this].filter(fn));
     }
 
     [Symbol.iterator](): Iterator<T> {

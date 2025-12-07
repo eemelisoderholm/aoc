@@ -86,6 +86,17 @@ const directions = {
   ...diagonalDirections,
 } as const;
 
+/**
+ * Get all adjacent Vec2s that exist within the given Vec2Set,
+ * around the given Vec2 position
+ */
+const findAdjacent = (set: Vec2Set, pos: Vec2): Vec2Set =>
+  new V2Set(
+    Object.values(directions)
+      .map((dir) => V2.add(pos, dir))
+      .filter((adj) => set.has(adj)),
+  );
+
 const turn90CCW = ({ x, y }: Vec2) => ({ x: y, y: -x });
 const turn90CW = ({ x, y }: Vec2) => ({ x: -y, y: x });
 
@@ -243,8 +254,53 @@ const fromString = (s: string): Vec2 => {
 const V2Set = createSerializedSet<Vec2>(toString, fromString);
 export type Vec2Set = InstanceType<typeof V2Set>;
 
+/**
+ * Parse given text into a Vec2Set, treating it as a grid,
+ * where x is column and y is line, starting with x0y0.
+ * Optionally apply the given predicate function to
+ * determine whether the position is included in the set.
+ */
+const setFromCharGrid = (
+  text: string,
+  include: (char: string, pos: Vec2, set: Vec2Set) => boolean = () => true,
+): Vec2Set => {
+  const set = new V2.Set();
+  const lines = text.split("\n");
+  for (let y = 0; y < lines.length; y++) {
+    for (let x = 0; x < lines[y].length; x++) {
+      if (include(lines[y][x], V2.from(x, y), set)) {
+        set.add(V2.from(x, y));
+      }
+    }
+  }
+  return set;
+};
+
 const V2Map = createSerializedMap<Vec2>(toString, fromString);
 export type Vec2Map<T> = InstanceType<typeof V2Map<T>>;
+
+/**
+ * Parse given text into a Vec2Map, treating it as a grid,
+ * where x is column and y is line, starting with x0y0.
+ * The given getValue function determines what value each
+ * character or position produces for the map.
+ * Undefined values are not included in the map at all.
+ */
+const mapFromCharGrid = <T>(
+  text: string,
+  getValue: (char: string, pos: Vec2, map: Vec2Map<T>) => T | undefined,
+): Vec2Map<T> => {
+  const map = new V2Map<T>();
+  const lines = text.split("\n");
+  for (let y = 0; y < lines.length; y++) {
+    for (let x = 0; x < lines[y].length; x++) {
+      const pos = V2.from(x, y);
+      const value = getValue(lines[y][x], pos, map);
+      if (value !== undefined) map.set(pos, value);
+    }
+  }
+  return map;
+};
 
 export const V2 = {
   zero,
@@ -262,6 +318,7 @@ export const V2 = {
   clamp,
   str,
   adjacent,
+  findAdjacent,
   cardinalDirections,
   diagonalDirections,
   directions,
@@ -279,5 +336,7 @@ export const V2 = {
   gridPathDistance,
   pathIntersections,
   Set: V2Set,
+  setFromCharGrid,
   Map: V2Map,
+  mapFromCharGrid,
 };
