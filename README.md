@@ -176,5 +176,6 @@ solutions themselves are usually pure `(string) => number` functions.
 | [2025/02: Gift Shop](./2025/02/02.md)           | [./2025/02/02.ts](./2025/02/02.ts) |
 | [2025/03: Lobby](./2025/03/03.md)               | [./2025/03/03.ts](./2025/03/03.ts) |
 | [2025/04: Printing Department](./2025/04/04.md) | [./2025/04/04.ts](./2025/04/04.ts) |
+| [2025/05: Cafeteria](./2025/05/05.md)           | [./2025/05/05.ts](./2025/05/05.ts) |
 
 <!--- SOLUTIONS-AUTOGEN-END -->
