@@ -4,6 +4,7 @@ const mul = (a: number, b: number): number => a * b;
 const diff = (a: number, b: number): number => Math.abs(a - b);
 
 const sum = (vals: number[]): number => vals.reduce(add, 0);
+const prod = (vals: number[]): number => vals.reduce(mul, 1);
 const average = (vals: number[]): number => sum(vals) / vals.length;
 const median = (arr: number[]): number | undefined => {
   if (!arr.length) return undefined;
@@ -21,6 +22,7 @@ export const M = {
   mul,
   diff,
   sum,
+  prod,
   average,
   median,
   clamp,

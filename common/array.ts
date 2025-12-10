@@ -31,6 +31,26 @@ const partition = <T>(
     [[], []] as [T[], T[]],
   );
 
+/**
+ * Split an array into groups, splitting on the item where predicate
+ * resolves to true, and omitting those items.
+ * @example splitOn([1, 2, 3, 4, 5, 6, 7], (x) => x % 3 === 0)
+ *  => [[1, 2], [4, 5], [7]]
+ */
+export const splitOn = <T>(xs: T[], pred: (x: T) => boolean): T[][] => {
+  const result: T[][] = [[]];
+  for (const x of xs) {
+    if (pred(x)) {
+      if (A.last(result).length > 0) {
+        result.push([]);
+      }
+    } else {
+      A.last(result).push(x);
+    }
+  }
+  return result;
+};
+
 /** Divide array into two arrays from the middle */
 const divide = <T>(arr: T[]): [T[], T[]] => {
   const cutoff = Math.ceil(arr.length / 2);
@@ -257,6 +277,7 @@ export const A = {
   last,
   middle,
   partition,
+  splitOn,
   divide,
   chunk,
   transpose,
