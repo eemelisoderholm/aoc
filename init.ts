@@ -15,24 +15,23 @@ function getArgs(): { year: number; day: number } {
 const { year, day } = getArgs();
 const dd = day.toString().padStart(2, "0");
 
-const path = `./${year}/${dd}`;
+const path = `./${year}/`;
 
 // Copy the template files as-is to the new path
-await copy("./template", path);
+await copy("./template", path, { overwrite: true });
 
 for await (const entry of Deno.readDir(path)) {
-  if (entry.name.startsWith("00.")) {
+  if (entry.name.startsWith("yyyy-dd")) {
     const filePath = `${path}/${entry.name}`;
     const content = await Deno.readTextFile(filePath);
 
     // Write files with replaced name and content
     await Deno.writeTextFile(
       filePath
-        .replace("/00.", `/${dd}.`)
-        .replace(".tst", ".test"),
+        .replace("/yyyy-dd.", `/${year}-${dd}.`),
       content
-        .replaceAll("%dd%", dd)
-        .replaceAll("%yyyy%", year.toString()),
+        .replaceAll("dd", dd)
+        .replaceAll("yyyy", year.toString()),
     );
 
     // Remove the template files

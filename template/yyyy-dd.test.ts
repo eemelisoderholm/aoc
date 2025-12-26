@@ -4,20 +4,23 @@ import { part1, part2 } from "./yyyy-dd.ts";
 const exampleInput = `
 
 `.trim();
-const realInput = await Deno.readTextFile("./yyyy/yyyy-dd.txt");
+
+const realInput = await Deno.readTextFile(
+  `${import.meta.dirname}/yyyy-dd.input.txt`,
+);
 
 Deno.test("yyyy Day dd Part 1 - Example Input", () => {
   assertEquals(part1(exampleInput), 0);
 });
 
-Deno.test("yyyy Day %dd% Part 1 - Real Input", () => {
+Deno.test.ignore("yyyy Day dd Part 1 - Real Input", () => {
   assertEquals(part1(realInput), 0);
 });
 
-Deno.test("yyyy Day dd Part 2 - Example Input", () => {
+Deno.test.ignore("yyyy Day dd Part 2 - Example Input", () => {
   assertEquals(part2(exampleInput), 0);
 });
 
-Deno.test("yyyy Day dd Part 2 - Real Input", () => {
+Deno.test.ignore("yyyy Day dd Part 2 - Real Input", () => {
   assertEquals(part2(realInput), 0);
 });

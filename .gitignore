@@ -1,2 +1,6 @@
+# Puzzle inputs or texts should not be redistributed
 *input.txt
-!yyyy-dd-input.txt
+*puzzle.md
+
+# Allow the empty input template file
+!yyyy-dd.input.txt
