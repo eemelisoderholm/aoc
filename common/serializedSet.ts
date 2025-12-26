@@ -60,6 +60,10 @@ export function createSerializedSet<T>(
       })();
     }
 
+    get vals(): T[] {
+      return [...this.values()];
+    }
+
     forEach(fn: (value: T) => void) {
       return this.set.forEach((s) => fn(deserialize(s)));
     }

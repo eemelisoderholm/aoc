@@ -62,6 +62,10 @@ export function createSerializedMap<K>(
       return this.map.values();
     }
 
+    get vals(): V[] {
+      return [...this.values()];
+    }
+
     entries(): IterableIterator<[K, V]> {
       return Array.from(this.map.entries()).map((
         [key, value],

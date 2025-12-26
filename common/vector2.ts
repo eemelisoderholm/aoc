@@ -86,6 +86,27 @@ const directions = {
   ...diagonalDirections,
 } as const;
 
+type DirectionKey = keyof typeof directions;
+
+/**
+ * Get a Vec2 record of directions around given position,
+ * at the given distance (default 1)
+ * @example const target = getDirectionsAround(V2.from(5, 5))
+ * // V2.equals(target.north, { x: 5, y: 4 }) === true
+ * // V2.equals(target.southEast, { x: 6, y: 6 }) === true
+ */
+const getDirectionsAround = (pos: Vec2, distance = 1) => {
+  const result = {} as { [K in DirectionKey]: Vec2 };
+  for (const key in directions) {
+    const dir = directions[key as DirectionKey];
+    result[key as DirectionKey] = {
+      x: pos.x + dir.x * distance,
+      y: pos.y + dir.y * distance,
+    };
+  }
+  return result;
+};
+
 /**
  * Get all adjacent Vec2s that exist within the given Vec2Set,
  * around the given Vec2 position
@@ -322,6 +343,7 @@ export const V2 = {
   cardinalDirections,
   diagonalDirections,
   directions,
+  getDirectionsAround,
   turn90CW,
   turn90CCW,
   setFromRange,
